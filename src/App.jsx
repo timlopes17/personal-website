@@ -110,6 +110,16 @@ function App() {
               + "Programming Language: <span class='bold-project'>Python</span><br/>"
               + "Deployed on: <span class='bold-project'>Raspberry Pi</span><br/>"}}></div>}
             />
+            <Project
+              icon="./me.png"
+              link="https://github.com/timlopes17/personal-website"
+              label="Portfolio Website"
+              description={<div dangerouslySetInnerHTML={{ __html: "I created this website to show off my projects, skills, about me, and contact links. "
+              + "Used TailwindCSS to help with its reponsive design and feel.<br/><br/>" 
+              + "Programming Language: <span class='bold-project'>React JS</span><br/>"
+              + "IDE: <span class='bold-project'>VSCode</span><br/>"
+              + "Deployed on: <span class='bold-project'>Netlify</span><br/>"}}></div>}
+            />
           </div>
         </div>
       </div>
