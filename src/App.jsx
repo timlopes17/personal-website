@@ -6,6 +6,7 @@ import me from './icons/me.jpg'
 import linkedinIcon from './icons/linkedin.png';
 import gmail from './icons/gmail.png'
 import github from './icons/github.png'
+import leetcode from './icons/leetcode.png'
 
 function App() {
   const [showHeader, setShowHeader] = useState(false);
@@ -88,8 +89,8 @@ function App() {
               description={<div dangerouslySetInnerHTML={{ __html: "Chop It is an engaging Android game that utilizes various sensors such as the gyroscope, accelerometer, magnetometer, "
               + "and light sensor to create a unique gaming experience. The incorporation of different sensors enhances the game's responsiveness and interactivity, making it a fun "
               + "and challenging game to play.<br/><br/>Programming Language: "
-              + "<span class='bold-project'>Kotlin</span><br/>Deployed on: <span class='bold-project'>Play Store</span><br/>Download Here: "
-              + "<span class='bold-project'>(Identify Verification Pending)</span>" }}></div>}
+              + "<span class='bold-project'>Kotlin</span><br/>Deployed on: <span class='bold-project'>Play Store</span><br/>Play Store:"
+              + "<a href='https://play.google.com/store/apps/details?id=edu.temple.chopitgame' class='bold-project'> DOWNLOAD</a>" }}></div>}
             />
             <Project
               icon="./overwatch-workshop.png"
@@ -163,6 +164,13 @@ function App() {
               <span>
                 GitHub:&nbsp;
                 <a href="https://github.com/timlopes17" className="text-white font-bold">/timlopes17</a>
+              </span>
+            </span>
+            <span class='flex flex-row justify-center items-center p-2'>
+              <img src={leetcode} alt="LeetCode Icon" class="w-6 h-6 mr-2"/>
+              <span>
+                LeetCode:&nbsp;
+                <a href="https://leetcode.com/timlopes/" className="text-white font-bold">/timlopes</a>
               </span>
             </span>
           </div>
