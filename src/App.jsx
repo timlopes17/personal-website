@@ -93,13 +93,14 @@ function App() {
               + "<a href='https://play.google.com/store/apps/details?id=edu.temple.chopitgame' target='_blank' class='bold-project'> DOWNLOAD</a>" }}></div>}
             />
             <Project
-              icon="./overwatch-workshop.png"
-              link="https://www.youtube.com/@PMAJellies/videos"
-              label="Overwatch Workshop Developer"
-              description={<div dangerouslySetInnerHTML={{ __html: "Using the Overwatch Workshop tool I've created over 30 Gamemodes. I was hired on NVIDIA "
-              + "to create custom modes used for benchmarking and monitor testing. In total, over 500,000 people have used my workshops.<br/><br/>" 
-              + "Programming Language: <span class='bold-project'>Simplified C++</span><br/>"
-              + "Deployed on: <span class='bold-project'>Overwatch</span><br/>"}}></div>}
+              icon="./plunged.png"
+              link="https://store.steampowered.com/app/2499650/Plunged/"
+              label="Plunged"
+              description={<div dangerouslySetInnerHTML={{ __html: "Plunged is a first-person platformer developed on the <span class='bold-project'>Unity Real-Time Development Platform</span>. "
+              + "Set in a dynamic 3D environment, players strive to ascend each level. Crafted in C#, the game features intuitive settings designed with <span class='bold-project'>UI/UX</span> best "
+              + "practices. Comprehensive memory management ensures seamless asset loading and a high-quality experience across devices.<br/><br/>"
+              + "Programming Language: <span class='bold-project'>C#</span><br/>Deployed on: <span class='bold-project'>Steam</span><br/>Steam Page:"
+              + "<a href='https://store.steampowered.com/app/2499650/Plunged/' target='_blank' class='bold-project'> HERE</a>" }}></div>}
             />
             <Project
               icon="./jellies-bot.png"
