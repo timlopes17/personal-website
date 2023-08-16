@@ -100,7 +100,7 @@ function App() {
               + "Set in a dynamic 3D environment, players strive to ascend each level. Crafted in C#, the game features intuitive settings designed with <span class='bold-project'>UI/UX</span> best "
               + "practices. Comprehensive memory management ensures seamless asset loading and a high-quality experience across devices.<br/><br/>"
               + "Programming Language: <span class='bold-project'>C#</span><br/>Deployed on: <span class='bold-project'>Steam</span><br/>Steam Page:"
-              + "<a href='https://store.steampowered.com/app/2499650/Plunged/' target='_blank' class='bold-project'> HERE</a>" }}></div>}
+              + "<a href='https://store.steampowered.com/app/2499650/Plunged/' target='_blank' rel='noreferrer' class='bold-project'> HERE</a>" }}></div>}
             />
             <Project
               icon="./jellies-bot.png"
@@ -127,10 +127,10 @@ function App() {
       <div id="about" className="pt-16 md:pt-20 bg-mygray">
         <div className="border-t-4 border-green-600">
           <div className="p-4 md:p-16 flex-col flex justify-center items-center">
-            <a href="https://www.linkedin.com/in/timlopes/" target="_blank">
+            <a href="https://www.linkedin.com/in/timlopes/" target="_blank" rel="noreferrer">
               <img src={me} alt="Project icon" className="border-4 border-green-600 w-64 h-64 mb-4" />
             </a>
-            <a href="https://www.linkedin.com/in/timlopes/" target="_blank" className="text-xl text-white text-center md:w-1/2">
+            <a href="https://www.linkedin.com/in/timlopes/" target="_blank" rel="noreferrer" className="text-xl text-white text-center md:w-1/2">
               https://www.linkedin.com/in/timlopes/
             </a>
             <div className="p-8 text-white text-center md:w-1/2">
@@ -157,7 +157,7 @@ function App() {
               <img src={gmail} alt="Gmail Icon" class="w-6 h-6 mr-2"/>
               <span>
                 Email:&nbsp;
-                <a href="mailto:timlopes0817@gmail.com" target="_blank" className="text-white font-bold">timlopes0817@gmail.com</a>
+                <a href="mailto:timlopes0817@gmail.com" target="_blank" rel="noreferrer" className="text-white font-bold">timlopes0817@gmail.com</a>
               </span>
             </span>
             <span className="p-2">
@@ -167,21 +167,21 @@ function App() {
               <img src={linkedinIcon} alt="LinkedIn Icon" class="w-6 h-6 mr-2"/>
               <span>
                 LinkedIn:&nbsp;
-                <a href="https://www.linkedin.com/in/timlopes/" target="_blank" className="text-white font-bold">/timlopes</a>
+                <a href="https://www.linkedin.com/in/timlopes/" target="_blank" rel="noreferrer" className="text-white font-bold">/timlopes</a>
               </span>
             </span>
             <span class='flex items-center p-2'>
               <img src={github} alt="GitHub Icon" class="w-6 h-6 mr-2"/>
               <span>
                 GitHub:&nbsp;
-                <a href="https://github.com/timlopes17" target="_blank" className="text-white font-bold">/timlopes17</a>
+                <a href="https://github.com/timlopes17" target="_blank" rel="noreferrer" className="text-white font-bold">/timlopes17</a>
               </span>
             </span>
             <span class='flex flex-row justify-center items-center p-2'>
               <img src={leetcode} alt="LeetCode Icon" class="w-6 h-6 mr-2"/>
               <span>
                 LeetCode:&nbsp;
-                <a href="https://leetcode.com/timlopes/" target="_blank" className="text-white font-bold">/timlopes</a>
+                <a href="https://leetcode.com/timlopes/" target="_blank" rel="noreferrer" className="text-white font-bold">/timlopes</a>
               </span>
             </span>
           </div>
