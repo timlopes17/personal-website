@@ -10,6 +10,8 @@ import leetcode from './icons/leetcode.png'
 import { Button } from '@mui/material'
 import { darkTheme, lightTheme } from './Themes';
 import { ThemeProvider } from '@mui/material/styles';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import Movies from './pages/Movies';
 
 function App() {
   const [showHeader, setShowHeader] = useState(false);
@@ -21,10 +23,8 @@ function App() {
       const scrollPosition = window.scrollY;
   
       if (scrollPosition < firstDivHeight/2) {
-        console.log("Hidden")
         setShowHeader(false);
       } else {
-        console.log("Visible")
         setShowHeader(true);
       }
     }
@@ -35,8 +35,8 @@ function App() {
 
   return (
     <ThemeProvider theme={useDarkTheme ? darkTheme : lightTheme}>
-      <div className="flex flex-col h-screen">
-        <Header className={showHeader ? 'show-header' : 'hide-header'} />
+        <div className="flex flex-col h-screen">
+          <Header className={showHeader ? 'show-header' : 'hide-header'} />
         <div id="first-div" className="flex-1 min-h-screen min-w-screen bg-mygray text-white flex flex-col items-center justify-center">
           <h1 className="md:text-6xl text-4xl font-bold text-center mb-4">
             Tim Lopes
@@ -129,6 +129,20 @@ function App() {
                 + "IDE: <span class='bold-project'>VSCode</span><br/>"
                 + "Deployed on: <span class='bold-project'>Netlify</span><br/>"}}></div>}
               />
+            </div>
+          </div>
+        </div>
+        <div id="demos" className="pt-16 md:pt-20 bg-mygray">
+          <div className="border-t-4 border-tw_demos">
+            <div className="p-4 md:p-16 flex-col flex justify-center items-center">
+              <Button
+                size="large"
+                variant="text"
+                color="tl_demos"
+                onClick={() => window.open('/movies', '_blank')}
+                style={{ fontSize: '30px' }}>
+                Movies
+              </Button>            
             </div>
           </div>
         </div>

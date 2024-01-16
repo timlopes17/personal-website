@@ -3,11 +3,12 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import './main.css';
+import Main from './Main';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <div className="bg-gray-900">
-    <App />
+    <Main />
   </div>
 );
 
