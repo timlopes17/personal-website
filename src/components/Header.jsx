@@ -7,16 +7,19 @@ const Header = ({className}) => {
         <div className="flex-grow"></div>
         <ul className="flex sm:space-x-6 text-base md:text-4xl"> {/* added md:text-xl class */}
             <li>
-            <a href="#skills" className="hover:text-red-600 sm: p-3">Skills</a> {/* removed text-xlg class */}
+            <a href="#skills" className="hover:text-tw_skills sm: p-2">SKILLS</a> {/* removed text-xlg class */}
             </li>
             <li>
-            <a href="#projects" className="hover:text-blue-600 sm: p-3">Projects</a> {/* removed text-xlg class */}
+            <a href="#projects" className="hover:text-tw_projects sm: p-2">PROJECTS</a> {/* removed text-xlg class */}
             </li>
             <li>
-            <a href="#about" className="hover:text-green-600 sm: p-3">About</a> {/* removed text-xlg class */}
+            <a href="#demos" className="hover:text-tw_demos sm: p-2">DEMOS</a> {/* removed text-xlg class */}
             </li>
             <li>
-            <a href="#contact" className="hover:text-yellow-600 sm: p-3">Contact</a> {/* removed text-xlg class */}
+            <a href="#about" className="hover:text-tw_about sm: p-2">ABOUT</a> {/* removed text-xlg class */}
+            </li>
+            <li>
+            <a href="#contact" className="hover:text-tw_contact sm: p-2">CONTACT</a> {/* removed text-xlg class */}
             </li>
         </ul>
         <div className="flex-grow"></div>

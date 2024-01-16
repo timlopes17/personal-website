@@ -27,6 +27,7 @@ code {
 header {
   transform: translateY(-100%);
   transition: transform 0.5s ease;
+  font-family: 'Roboto', sans-serif;
 }
 
 .show-header {
@@ -39,12 +40,12 @@ header {
 
 .bold-skill {
   font-weight:500;
-  color: #DC2626;
+  color: #ff003a;
 }
 
 .bold-project {
   font-weight:500;
-  color: #6495ff;
+  color: #FC007B;
 }
 
 .container {
