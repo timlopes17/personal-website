@@ -10,8 +10,6 @@ import leetcode from './icons/leetcode.png'
 import { Button } from '@mui/material'
 import { darkTheme, lightTheme } from './Themes';
 import { ThemeProvider } from '@mui/material/styles';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
-import Movies from './pages/Movies';
 
 function App() {
   const [showHeader, setShowHeader] = useState(false);

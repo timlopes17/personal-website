@@ -1,12 +1,20 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import pandas as pd
 import joblib
 from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
-app = Flask(__name__)
+import os
 
-final_features = joblib.load('data\\features.pkl')
-df = pd.read_csv('data/movie_data_api.csv') # Make sure this is accessible
+
+app = Flask(__name__)
+CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
+
+script_dir = os.path.dirname(os.path.abspath(__file__))
+features_path = os.path.join(script_dir, 'data', 'features.pkl')
+final_features = joblib.load(features_path)
+csv_path = os.path.join(script_dir, 'data', 'movie_data_api.csv')
+df = pd.read_csv(csv_path)
 no_keywords_mask = df['keywords'].isna() | (df['keywords'] == '')
 
 def recommend_movie(movie_id1, movie_id2, df, final_features, num_recommendations=3, penalty_factor=0.5):
@@ -52,20 +60,25 @@ def recommend_movie(movie_id1, movie_id2, df, final_features, num_recommendation
 
     return recommended_movies
 
-@app.route('/recommend', methods=['GET'])
+@app.route('/api/recommend', methods=['POST'])
 def recommend():
     data = request.json
     print(data)
     movie_id1 = data['movie_id1']
     movie_id2 = data['movie_id2']
-    recommendations = recommend_movie(movie_id1, movie_id2, df, final_features, num_recommendations=3)
-    recommendations = [int(movie_id) for movie_id in recommendations]
+    recommendations_ids = recommend_movie(movie_id1, movie_id2, df, final_features, num_recommendations=3)
+    df_clean = df.fillna("N/A")
+    recommendations = df_clean[df_clean['movie_id'].isin(recommendations_ids)].to_dict(orient='records')
+    print(recommendations)
     return jsonify(recommendations)
 
-@app.route('/movies', methods=['GET'])
+@app.route('/api/movies', methods=['GET'])
 def movies():
     # Selecting required columns
     movies_df = df[['movie_id', 'title', 'release_date', 'vote_avg', 'image']]
+
+    # Replace NaN values with None (which will become 'null' in JSON)
+    movies_df = movies_df.where(pd.notnull(movies_df), None)
 
     # Convert DataFrame to a list of dictionaries for JSON serialization
     movies_list = movies_df.to_dict(orient='records')

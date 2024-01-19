@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import { createRoot } from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
 import './main.css';
 import Main from './Main';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = createRoot(document.getElementById('root'));
 root.render(
   <div className="bg-gray-900">
     <Main />
