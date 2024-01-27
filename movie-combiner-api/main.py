@@ -5,10 +5,20 @@ import joblib
 from sklearn.metrics.pairwise import cosine_similarity
 import numpy as np
 import os
+import openai
+from dotenv import load_dotenv
+import json
 
 
 app = Flask(__name__)
 CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
+
+load_dotenv()
+openai_api_key = os.getenv('OPENAI_API_KEY')
+
+print("API Key:", openai_api_key)
+
+openai.api_key = openai_api_key
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
 features_path = os.path.join(script_dir, 'data', 'features.pkl')
@@ -84,6 +94,47 @@ def movies():
     movies_list = movies_df.to_dict(orient='records')
 
     return jsonify(movies_list)
+
+@app.route('/api/gpt_movie', methods=['POST'])
+def gpt_movie():
+    data = request.json
+    print(data)
+    movie_id1 = data['movie_id1']
+    movie_id2 = data['movie_id2']
+
+    movie1 = df[df['movie_id'] == movie_id1][['title', 'description']]
+    movie2 = df[df['movie_id'] == movie_id2][['title', 'description']]
+    mov1Title = movie1.iloc[0]['title']
+    mov1Desc = movie1.iloc[0]['description']
+    mov2Title = movie2.iloc[0]['title']
+    mov2Desc = movie2.iloc[0]['description']
+
+    response = openai.chat.completions.create(
+        model="gpt-3.5-turbo-1106",
+        response_format={ "type": "json_object" },
+        messages=[
+            {"role": "system", "content": "You are a helpful assistant designed to output JSON. I will give you two movie titles and descriptions. You are in charge of creating a new movie that combines aspects from both of these movies into one, a brand new movie not as if they're universes combined. I want you to return a JSON structure response like this {'title': '<New Movie Title>', 'description': '<New Movie Description>' }" },
+            {"role": "user", "content": "Movie 1 is Toy Story which is about Led by Woody, Andy's toys live happily in his room until Andy's birthday brings Buzz Lightyear onto the scene. Afraid of losing his place in Andy's heart, Woody plots against Buzz. But when circumstances separate Buzz and Woody from their owner, the duo eventually learns to put aside their differences. Movie 2 is Monsters, Inc. which is about Lovable Sulley and his wisecracking sidekick Mike Wazowski are the top scare team at Monsters, Inc., the scream-processing factory in Monstropolis. When a little girl named Boo wanders into their world, it's the monsters who are scared silly, and it's up to Sulley and Mike to keep her out of sight and get her back home."},
+            {"role": "assistant", "content": "{'title': 'Whispers in the Attic', 'description': 'Toys and closet monsters join forces in a whimsical adventure to transform a child's fears into a world of laughter and imagination.'}"},
+            {"role": "user", "content": f"Movie 1 is {mov1Title} which is about {mov1Desc}. Movie 2 is {mov2Title} which is about {mov2Desc}."}
+        ]
+    )
+
+    json_string = response.choices[0].message.content
+    data = json.loads(json_string)
+    print("JSON:", data)
+
+    response = openai.images.generate(
+        model="dall-e-3",
+        prompt=f"A movie poster for a movie called {data['title']} which is about: {data['description']}.",
+        size="1024x1024",
+        quality="standard",
+        n=1,
+    )
+
+    image_url = response.data[0].url
+
+    return {'imageUrl': image_url, 'title': data['title'], 'description': data['description']}
 
 if __name__ == '__main__':
     app.run(debug=True)

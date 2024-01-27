@@ -26,3 +26,4 @@ yarn-error.log*
 movie-combiner-api/data/tmdb_5000_credits.csv
 movie-combiner-api/data/tmdb_5000_movies.csv
 *.pyc
+.env

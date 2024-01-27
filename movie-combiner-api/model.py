@@ -95,9 +95,9 @@ release_year_scaled_sparse = csr_matrix(df['release_year_scaled'].values.reshape
 weight_for_description = 4
 weight_for_genres = 3
 weight_for_keywords = 4
-weight_for_vote_avg = 0.25
-weight_for_popularity = 0.25
-weight_for_release_year = 0.25
+weight_for_vote_avg = 0.2
+weight_for_popularity = 0.4
+weight_for_release_year = 0.125
 
 # Apply weights
 weighted_tfidf_desc = tfidf_matrix_desc * weight_for_description
@@ -174,8 +174,8 @@ def recommend_movie(movie_id1, movie_id2, df, final_features, num_recommendation
     return recommended_movies
 
 # Example usage
-id1 = 155
-id2 = 166426
+id1 = 27205
+id2 = 157336
 recommended_movies = recommend_movie(id1, id2, df, final_features, num_recommendations=5)
 
 print(f"Movie Combiner for {print_movie(id1)} and {print_movie(id2)}:")

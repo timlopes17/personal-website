@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Button, Autocomplete, Box, TextField, CssBaseline, Grid, Typography, createFilterOptions  } from '@mui/material'
 import { darkTheme, lightTheme } from '../Themes';
 import { ThemeProvider } from '@mui/material/styles';
+import CircularProgress from '@mui/material/CircularProgress';
+import MovieCard from '../components/MovieCard';
 
 const Movies = () => {
     const [useDarkTheme, setUseDarkTheme] = useState(true)
@@ -10,6 +12,8 @@ const Movies = () => {
     const [selectedMovie1, setSelectedMovie1] = useState(null);
     const [selectedMovie2, setSelectedMovie2] = useState(null);
     const [recMovie, setRecMovie] = useState(null)
+    const [gptMovie, setGptMovie] = useState(null)
+    const [gptLoading, setGptLoading] = useState(false)
 
     const areBothMoviesSelected = selectedMovie1 && selectedMovie2;
     
@@ -47,6 +51,9 @@ const Movies = () => {
       };
 
     const handleCombineClick = () => {
+        setRecMovie(null)
+        setGptMovie(null)
+        setGptLoading(false)
         fetch('http://127.0.0.1:5000/api/recommend', {
             method: 'POST',
             headers: {
@@ -64,7 +71,7 @@ const Movies = () => {
             return response.json();
           })
           .then(data => {
-            console.log(data); // Process your recommendations here
+            console.log(data);
             setRecMovie(data)
           })
           .catch(error => {
@@ -73,14 +80,39 @@ const Movies = () => {
     };
 
     const handleChatGPTCombineClick = () => {
-        console.log('ChatGPT Combine movies');
-        // Implement the logic for ChatGPT to combine movies
+        setRecMovie(null)
+        setGptMovie(null)
+        setGptLoading(true)
+        fetch('http://127.0.0.1:5000/api/gpt_movie', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              movie_id1: selectedMovie1.movie_id,
+              movie_id2: selectedMovie2.movie_id
+            })
+          })
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok ' + response.statusText);
+            }
+            return response.json();
+          })
+          .then(data => {
+            console.log(data);
+            setGptLoading(false)
+            setGptMovie(data)
+          })
+          .catch(error => {
+            console.error('There has been a problem with your fetch operation:', error);
+          });
     };
 
     return(
         <ThemeProvider theme={useDarkTheme ? darkTheme : lightTheme}>
             <CssBaseline /> {/* This applies the dark background */}
-            <div className="flex flex-col h-screen">
+            <div className="flex flex-col">
                 <div id="first-div" className="flex-1 min-h-screen min-w-screen bg-mygray text-white flex flex-col items-center justify-center">
                     <Typography variant="h3" gutterBottom>
                         Movie Combiner
@@ -120,6 +152,8 @@ const Movies = () => {
                         }}
                         onChange={(event, newValue) => {
                                     setSelectedMovie1(newValue);
+                                    setRecMovie(null)
+                                    setGptMovie(null)
                                 }}
                         />
 
@@ -156,6 +190,8 @@ const Movies = () => {
                         }}
                         onChange={(event, newValue) => {
                                     setSelectedMovie2(newValue);
+                                    setRecMovie(null)
+                                    setGptMovie(null)
                                 }}
                         />
                         <Button variant="contained" fullWidth onClick={handleCombineClick} disabled={!areBothMoviesSelected}>
@@ -164,6 +200,33 @@ const Movies = () => {
                         <Button variant="contained" fullWidth color="secondary" onClick={handleChatGPTCombineClick} disabled={!areBothMoviesSelected}>
                             ChatGPT Combine
                         </Button>
+                        { recMovie && areBothMoviesSelected && (
+                            <div style={{margin: "10px"}}>
+                            <MovieCard title={recMovie[0].title} year={recMovie[0].release_date ? recMovie[0].release_date.split('-')[0] : '-'} 
+                            rating={recMovie[0].vote_avg} description={recMovie[0].description} 
+                            imageUrl={`https://image.tmdb.org/t/p/original${recMovie[0].image}`}/>
+                            
+                            <MovieCard title={recMovie[1].title} year={recMovie[1].release_date ? recMovie[1].release_date.split('-')[1] : '-'} 
+                            rating={recMovie[1].vote_avg} description={recMovie[1].description} 
+                            imageUrl={`https://image.tmdb.org/t/p/original${recMovie[1].image}`}/>
+
+                            <MovieCard title={recMovie[2].title} year={recMovie[2].release_date ? recMovie[2].release_date.split('-')[2] : '-'} 
+                            rating={recMovie[2].vote_avg} description={recMovie[2].description} 
+                            imageUrl={`https://image.tmdb.org/t/p/original${recMovie[2].image}`}/>
+                            </div>
+                        )}
+
+                        { gptMovie && !gptLoading && areBothMoviesSelected && (
+                            <div style={{margin: "10px"}}>
+                                <MovieCard title={gptMovie.title} description={gptMovie.description} imageUrl={gptMovie.imageUrl} year={null} rating={null} gpt={true}/>
+                            </div>
+                        )}
+
+                        {gptLoading && (
+                            <div style={{margin: "10px", display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+                                <CircularProgress/>
+                            </div>
+                        )}
 
                     </Box>
                   )}
