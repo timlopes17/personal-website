@@ -19,7 +19,7 @@ const Movies = () => {
     
     useEffect(() => {
         setLoading(true)
-        fetch('http://127.0.0.1:5000/api/movies')
+        fetch('https://api-67g7vi5kza-ue.a.run.app/api/movies')
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -54,7 +54,7 @@ const Movies = () => {
         setRecMovie(null)
         setGptMovie(null)
         setGptLoading(false)
-        fetch('http://127.0.0.1:5000/api/recommend', {
+        fetch('https://api-67g7vi5kza-ue.a.run.app/api/recommend', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -83,7 +83,7 @@ const Movies = () => {
         setRecMovie(null)
         setGptMovie(null)
         setGptLoading(true)
-        fetch('http://127.0.0.1:5000/api/gpt_movie', {
+        fetch('https://api-67g7vi5kza-ue.a.run.app/api/gpt_movie', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
