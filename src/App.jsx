@@ -8,12 +8,11 @@ import gmail from './icons/gmail.png'
 import github from './icons/github.png'
 import leetcode from './icons/leetcode.png'
 import { Button } from '@mui/material'
-import { darkTheme, lightTheme } from './Themes';
+import { darkTheme } from './Themes';
 import { ThemeProvider } from '@mui/material/styles';
 
 function App() {
   const [showHeader, setShowHeader] = useState(false);
-  const [useDarkTheme, setUseDarkTheme] = useState(true)
 
   useEffect(() => {
     function handleScroll() {
@@ -32,7 +31,7 @@ function App() {
   }, [showHeader]);
 
   return (
-    <ThemeProvider theme={useDarkTheme ? darkTheme : lightTheme}>
+    <ThemeProvider theme={darkTheme}>
         <div className="flex flex-col h-screen">
           <Header className={showHeader ? 'show-header' : 'hide-header'} />
         <div id="first-div" className="flex-1 min-h-screen min-w-screen bg-mygray text-white flex flex-col items-center justify-center">

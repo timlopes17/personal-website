@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Autocomplete, Box, TextField, CssBaseline, Grid, Typography, createFilterOptions  } from '@mui/material'
-import { darkTheme, lightTheme } from '../Themes';
+import { Button, Autocomplete, Box, TextField, CssBaseline, Grid, Typography  } from '@mui/material'
+import { darkTheme } from '../Themes';
 import { ThemeProvider } from '@mui/material/styles';
 import CircularProgress from '@mui/material/CircularProgress';
 import MovieCard from '../components/MovieCard';
 
 const Movies = () => {
-    const [useDarkTheme, setUseDarkTheme] = useState(true)
     const [movies, setMovies] = useState([])
     const [loading, setLoading] = useState(true)
     const [selectedMovie1, setSelectedMovie1] = useState(null);
@@ -110,7 +109,7 @@ const Movies = () => {
     };
 
     return(
-        <ThemeProvider theme={useDarkTheme ? darkTheme : lightTheme}>
+        <ThemeProvider theme={darkTheme}>
             <CssBaseline /> {/* This applies the dark background */}
             <div className="flex flex-col">
                 <div id="first-div" className="flex-1 min-h-screen min-w-screen bg-mygray text-white flex flex-col items-center justify-center">
