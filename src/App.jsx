@@ -138,7 +138,7 @@ function App() {
                 color="tl_demos"
                 onClick={() => window.open('/movies', '_blank')}
                 style={{ fontSize: '30px' }}>
-                Movies
+                Movie Combiner
               </Button>            
             </div>
           </div>
