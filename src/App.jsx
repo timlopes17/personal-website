@@ -132,14 +132,21 @@ function App() {
         <div id="demos" className="pt-16 md:pt-20 bg-mygray">
           <div className="border-t-4 border-tw_demos">
             <div className="p-4 md:p-16 flex-col flex justify-center items-center">
+              <p className="text-center text-gray-300 text-5xl">DEMOS<br/><br/></p>
               <Button
                 size="large"
-                variant="text"
+                variant="outlined"
                 color="tl_demos"
                 onClick={() => window.open('/movies', '_blank')}
                 style={{ fontSize: '30px' }}>
-                Movie Combiner
-              </Button>            
+                Movie Matchmaker
+              </Button>
+              <div className="p-6 border-b-2 border-tw_demos flex flex-col justify-between items-center text-white w-3/4 md:w-1/2">
+              <p className="text-center text-gray-300">Discover your next favorite film with Movie Matchmaker! This web tool takes the art of movie recommendations to the next level. Simply input two of your favorite movies, and let Movie Matchmaker work its magic!</p>
+              <p className="text-center text-gray-300"><br/>Scikit-learn-based <span class='bold-demo'>machine learning</span> model development</p>
+              <p className="text-center text-gray-300"><br/><span class='bold-demo'>Flask API</span> deployment on Google Cloud</p>
+              <p className="text-center text-gray-300"><br/>Integrated with <span class='bold-demo'>OpenAI API</span> for AI movie generation</p>
+              </div>
             </div>
           </div>
         </div>

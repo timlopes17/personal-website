@@ -48,6 +48,11 @@ header {
   color: #FC007B;
 }
 
+.bold-demo {
+  font-weight:500;
+  color: #D722B8;
+}
+
 .container {
   display: flex;
   justify-content: center;
