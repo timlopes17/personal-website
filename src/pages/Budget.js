@@ -264,20 +264,32 @@ function Budget() {
 
         console.log(leftover, totalIncome, totalExpenses)
 
-        // Add a new node for the leftover amount
-        nodes.push({ name: 'Leftover' });
-
-        // Find the index of the 'Income' and 'Leftover' nodes
-        const incomeIndex = nodes.findIndex(node => node.name === 'Income');
-        const leftoverIndex = nodes.findIndex(node => node.name === 'Leftover');
-
         // Add a link from 'Income' to 'Leftover' if there is any leftover amount
         if (leftover > 0) {
-        links.push({
-            source: incomeIndex,
-            target: leftoverIndex,
-            value: leftover
-        });
+            // Add a new node for the leftover amount
+            nodes.push({ name: 'Leftover' });
+
+            // Find the index of the 'Income' and 'Leftover' nodes
+            const incomeIndex = nodes.findIndex(node => node.name === 'Income');
+            const leftoverIndex = nodes.findIndex(node => node.name === 'Leftover');
+            links.push({
+                source: incomeIndex,
+                target: leftoverIndex,
+                value: leftover
+            });
+        } else {
+            // Add a new node for the leftover amount
+            nodes.push({ name: 'Debt' });
+            const debt = leftover * -1
+
+            // Find the index of the 'Income' and 'Leftover' nodes
+            const incomeIndex = nodes.findIndex(node => node.name === 'Income');
+            const debtIndex = nodes.findIndex(node => node.name === 'Debt');
+            links.push({
+                source: debtIndex,
+                target: incomeIndex,
+                value: debt
+            });
         }
 
         console.log( {nodes, links} )
