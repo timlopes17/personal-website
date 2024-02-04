@@ -17,6 +17,7 @@ const Movies = () => {
     const areBothMoviesSelected = selectedMovie1 && selectedMovie2;
     
     useEffect(() => {
+        document.title = "Movie Matchmaker";
         setLoading(true)
         fetch('https://api-67g7vi5kza-ue.a.run.app/api/movies')
         .then(response => {
@@ -114,7 +115,7 @@ const Movies = () => {
             <div className="flex flex-col">
                 <div id="first-div" className="flex-1 min-h-screen min-w-screen bg-mygray text-white flex flex-col items-center justify-center">
                     <Typography variant="h3" gutterBottom>
-                        Movie Combiner
+                        Movie Matchmaker
                     </Typography>
                     {loading ? (<span>Loading...</span>) : (
                     <Box sx={{ width: '100%', maxWidth: '600px', p: 2, '& > *': { mb: 1 } }}>
@@ -146,7 +147,6 @@ const Movies = () => {
                         )}
                         renderInput={(params) => <TextField {...params} label="Movie 1" variant="outlined" />}
                         style={{
-                            backgroundColor: 'lightgrey', // A lighter background color
                             width: '100%' // Set a specific width
                         }}
                         onChange={(event, newValue) => {
@@ -184,7 +184,6 @@ const Movies = () => {
                         )}
                         renderInput={(params) => <TextField {...params} label="Movie 2" variant="outlined" />}
                         style={{
-                            backgroundColor: 'lightgrey', // A lighter background color
                             width: '100%' // Set a specific width
                         }}
                         onChange={(event, newValue) => {
@@ -193,10 +192,10 @@ const Movies = () => {
                                     setGptMovie(null)
                                 }}
                         />
-                        <Button variant="contained" fullWidth onClick={handleCombineClick} disabled={!areBothMoviesSelected}>
+                        <Button variant="outlined" fullWidth onClick={handleCombineClick} disabled={!areBothMoviesSelected}>
                             Combine
                         </Button>
-                        <Button variant="contained" fullWidth color="secondary" onClick={handleChatGPTCombineClick} disabled={!areBothMoviesSelected}>
+                        <Button variant="outlined" fullWidth color="secondary" onClick={handleChatGPTCombineClick} disabled={!areBothMoviesSelected}>
                             ChatGPT Combine
                         </Button>
                         { recMovie && areBothMoviesSelected && (
@@ -205,11 +204,11 @@ const Movies = () => {
                             rating={recMovie[0].vote_avg} description={recMovie[0].description} 
                             imageUrl={`https://image.tmdb.org/t/p/original${recMovie[0].image}`}/>
                             
-                            <MovieCard title={recMovie[1].title} year={recMovie[1].release_date ? recMovie[1].release_date.split('-')[1] : '-'} 
+                            <MovieCard title={recMovie[1].title} year={recMovie[1].release_date ? recMovie[1].release_date.split('-')[0] : '-'} 
                             rating={recMovie[1].vote_avg} description={recMovie[1].description} 
                             imageUrl={`https://image.tmdb.org/t/p/original${recMovie[1].image}`}/>
 
-                            <MovieCard title={recMovie[2].title} year={recMovie[2].release_date ? recMovie[2].release_date.split('-')[2] : '-'} 
+                            <MovieCard title={recMovie[2].title} year={recMovie[2].release_date ? recMovie[2].release_date.split('-')[0] : '-'} 
                             rating={recMovie[2].vote_avg} description={recMovie[2].description} 
                             imageUrl={`https://image.tmdb.org/t/p/original${recMovie[2].image}`}/>
                             </div>

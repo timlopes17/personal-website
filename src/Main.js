@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import App from './App'; // Assuming you have a separate App component for the main page
 import Movies from './pages/Movies';
+import Budget from './pages/Budget';
 // import other necessary components
 
 function Main() {
@@ -12,6 +13,7 @@ function Main() {
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/movies" element={<Movies />} />
+        <Route path="/budget" element={<Budget />} />
       </Routes>
     </BrowserRouter>
   );

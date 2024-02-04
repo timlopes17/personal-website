@@ -37,7 +37,7 @@ const lightTheme = createTheme({
 // Dark theme
 const darkTheme = createTheme({
   palette: {
-    type: 'dark',
+    mode: 'dark',
     tl_skills: {
       main: '#ff003a', // Example primary color
     },

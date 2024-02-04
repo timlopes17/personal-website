@@ -76,7 +76,7 @@ function App() {
                 description={<div dangerouslySetInnerHTML={{ __html: "Discord bot that provides a comprehensive learning environment for educators and "
                 + "students. Features include: Quizzes, Assignments, Attendance, Polling, AI Study Tools, Lectures, and More.<br/><br/>Programming Language: "
                 + "<span class='bold-project'>Python</span> <br/>Deployed on: <span class='bold-project'>Google Cloud Platform</span><br/>Database: "
-                + "<span class='bold-project'>Supabase SQL</span><br />Testing: <span class='bold-project'>unittest framework</span>" }}></div>}
+                + "<span class='bold-project'>Supabase SQL</span><br />Testing: <span class='bold-project'>Unittest Framework</span>" }}></div>}
               />
               <Project 
                 icon='./adorado.png' 
@@ -104,7 +104,7 @@ function App() {
                 description={<div dangerouslySetInnerHTML={{ __html: "Plunged is a first-person platformer developed on the <span class='bold-project'>Unity Real-Time Development Platform</span>. "
                 + "Set in a dynamic 3D environment, players strive to ascend each level. Crafted in C#, the game features intuitive settings designed with <span class='bold-project'>UI/UX</span> best "
                 + "practices. Comprehensive memory management ensures seamless asset loading and a high-quality experience across devices.<br/><br/>"
-                + "Programming Language: <span class='bold-project'>C#</span><br/>Deployed on: <span class='bold-project'>Steam</span><br/>Steam Page:"
+                + "Programming Language: <span class='bold-project'>C#</span><br/>Game Engine: <span class='bold-project'>Unity</span><br/>Steam Page:"
                 + "<a href='https://store.steampowered.com/app/2499650/Plunged/' target='_blank' rel='noreferrer' class='bold-project'> HERE</a>" }}></div>}
               />
               <Project
@@ -140,6 +140,21 @@ function App() {
                 onClick={() => window.open('/movies', '_blank')}
                 style={{ fontSize: '30px' }}>
                 Movie Matchmaker
+              </Button>
+              <div className="p-6 border-b-2 border-tw_demos flex flex-col justify-between items-center text-white w-3/4 md:w-1/2 mb-6">
+              <p className="text-center text-gray-300">Discover your next favorite film with Movie Matchmaker! This web tool takes the art of movie recommendations to the next level. Simply input two of your favorite movies, and let Movie Matchmaker work its magic!</p>
+              <p className="text-center text-gray-300"><br/>Scikit-learn-based <span class='bold-demo'>machine learning</span> model development</p>
+              <p className="text-center text-gray-300"><br/><span class='bold-demo'>Flask API</span> deployment on Google Cloud</p>
+              <p className="text-center text-gray-300"><br/>Integrated with <span class='bold-demo'>OpenAI API</span> for AI movie generation</p>
+              </div>
+
+              <Button
+                size="large"
+                variant="outlined"
+                color="tl_demos"
+                onClick={() => window.open('/budget', '_blank')}
+                style={{ fontSize: '30px' }}>
+                Budget Balance
               </Button>
               <div className="p-6 border-b-2 border-tw_demos flex flex-col justify-between items-center text-white w-3/4 md:w-1/2">
               <p className="text-center text-gray-300">Discover your next favorite film with Movie Matchmaker! This web tool takes the art of movie recommendations to the next level. Simply input two of your favorite movies, and let Movie Matchmaker work its magic!</p>

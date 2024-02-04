@@ -1,0 +1,110 @@
+[
+  {
+    "name": "Train",
+    "category": "Transportation",
+    "value": "60",
+    "type": "expense"
+  },
+  {
+    "name": "Gas",
+    "category": "Transportation",
+    "value": "30",
+    "type": "expense"
+  },
+  {
+    "name": "Rent",
+    "category": "",
+    "value": "342",
+    "type": "expense"
+  },
+  {
+    "name": "Spotify",
+    "category": "Subscriptions",
+    "value": "12",
+    "type": "expense"
+  },
+  {
+    "name": "Netflix",
+    "category": "Subscriptions",
+    "value": "15",
+    "type": "expense"
+  },
+  {
+    "name": "Amazon",
+    "category": "Subscriptions",
+    "value": "10",
+    "type": "expense"
+  },
+  {
+    "name": "Groceries",
+    "category": "Food",
+    "value": "125",
+    "type": "expense"
+  },
+  {
+    "name": "Lunch",
+    "category": "Food",
+    "value": "60",
+    "type": "expense"
+  },
+  {
+    "name": "Car Insurance",
+    "category": "Transportation",
+    "value": "50",
+    "type": "expense"
+  },
+  {
+    "name": "Savings",
+    "category": "",
+    "value": "400",
+    "type": "expense"
+  },
+  {
+    "name": "OpenAI",
+    "category": "Subscriptions",
+    "value": "22",
+    "type": "expense"
+  },
+  {
+    "name": "Salary",
+    "category": "",
+    "value": "2742",
+    "type": "income"
+  },
+  {
+    "name": "Dental Insurance",
+    "category": "",
+    "value": "40",
+    "type": "expense"
+  },
+  {
+    "name": "Student Loans",
+    "category": "",
+    "value": "230",
+    "type": "expense"
+  },
+  {
+    "name": "Discord",
+    "category": "Subscriptions",
+    "value": "10",
+    "type": "expense"
+  },
+  {
+    "name": "Google",
+    "category": "Subscriptions",
+    "value": "7",
+    "type": "expense"
+  },
+  {
+    "name": "Dinner",
+    "category": "Food",
+    "value": "60",
+    "type": "expense"
+  },
+  {
+    "name": "Twitch",
+    "category": "Subscriptions",
+    "value": "5",
+    "type": "expense"
+  }
+]
