@@ -175,18 +175,13 @@ function App() {
                 https://www.linkedin.com/in/timlopes/
               </a>
               <div className="p-8 text-white text-center md:w-1/2">
-              Hello! My name is Tim Lopes, and I am a computer science professional with a passion for video editing and social media management. 
-              I have experience in both fields, having worked as a Freelance Video Editor and Digital Marketing Specialist. 
-              In my previous roles, I was responsible for creating video content for customers, managing teams of video editors, and using 
-              Python scripts to increase production efficiency.<br/><br/>
-
-              I have a Bachelor of Science in Computer Science from Temple University, where I maintained a GPA of 3.71. 
-              I also hold an Associate of Science in Computer Science from Montgomery County Community College, where I graduated with a GPA of 3.78. 
-              Throughout my academic career, I completed a variety of courses, including Calculus 3, Software Design, Android Mobile Development, and 
-              Web Application Development. <br/><br/>
-
-              Currently, I am seeking a software development role where I can leverage my skills in programming and project management 
-              to create high-quality software and solve complex problems in a dynamic and challenging environment. <br/><br/>
+              
+                Hello! I'm Tim Lopes, a dynamic professional with a strong background in computer science and a passion for video editing and social media management. 
+                I earned my Bachelor of Science in Computer Science from Temple University, achieving a GPA of 3.71, and enriched my education with courses in Calculus 3, 
+                Software Design, Android Mobile Development, and Web Application Development. <br/><br/> Currently, I am undertaking a 6 month Co-op at Independence Blue Cross as a 
+                Risk Adjustment Data Quality Analyst and Software Developer, where I apply my analytical and technical skills to ensure data integrity and develop software 
+                solutions. Seeking a role in software development, I aim to leverage my diverse skills in programming and project management to create high-quality software 
+                and solve complex problems in a dynamic and challenging environment.
               </div>
             </div>
           </div>
