@@ -157,10 +157,10 @@ function App() {
                 Budget Balance
               </Button>
               <div className="p-6 border-b-2 border-tw_demos flex flex-col justify-between items-center text-white w-3/4 md:w-1/2">
-              <p className="text-center text-gray-300">Discover your next favorite film with Movie Matchmaker! This web tool takes the art of movie recommendations to the next level. Simply input two of your favorite movies, and let Movie Matchmaker work its magic!</p>
-              <p className="text-center text-gray-300"><br/>Scikit-learn-based <span class='bold-demo'>machine learning</span> model development</p>
-              <p className="text-center text-gray-300"><br/><span class='bold-demo'>Flask API</span> deployment on Google Cloud</p>
-              <p className="text-center text-gray-300"><br/>Integrated with <span class='bold-demo'>OpenAI API</span> for AI movie generation</p>
+              <p className="text-center text-gray-300">Budget Balance is an intuitive web tool designed to help you manage your personal finances with ease. Simply input your income and expenses, and Budget Balance will visualize your cash flow with a dynamic Sankey chart.</p>
+              <p className="text-center text-gray-300"><br/>Visual budget using <span class='bold-demo'>D3.js</span> JavaScript library</p>
+              <p className="text-center text-gray-300"><br/>Leveraged <span class='bold-demo'>Material-UI</span> for a sleek user interface</p>
+              <p className="text-center text-gray-300"><br/>Features file upload and download capabilities, enabling easy import and export of budget data</p>
               </div>
             </div>
           </div>
