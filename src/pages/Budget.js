@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState, useCallback } from 'react';
+import React, {  useEffect, useState, useCallback } from 'react';
 import SankeyChart from '../components/SankeyChart';
 import { TextField, Button, List, ListItem, ListItemText, ListItemSecondaryAction, IconButton, CssBaseline, Typography, Tooltip, InputAdornment, Autocomplete, Snackbar, Alert } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -7,14 +7,13 @@ import RemoveIcon from '@mui/icons-material/Remove'
 import { darkTheme } from '../Themes';
 import { ThemeProvider } from '@emotion/react';
 import { useDropzone } from 'react-dropzone';
-import { sankeyJustify } from 'd3-sankey';
 
 function MyDropzone({ onFilesAdded }) {
     const onDrop = useCallback(acceptedFiles => {
         onFilesAdded(acceptedFiles)
     }, [onFilesAdded])
 
-    const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
+    const { getRootProps, getInputProps} = useDropzone({ onDrop });
 
     return (
         <div {...getRootProps()} style={{border: '2px dashed gray', borderRadius: '5px', padding: '20px', textAlign: 'center', color: 'gray', cursor: "pointer"}}>
