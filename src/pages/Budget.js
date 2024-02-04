@@ -276,7 +276,7 @@ function Budget() {
                 target: leftoverIndex,
                 value: leftover
             });
-        } else {
+        } else if (leftover < 0) {
             // Add a new node for the leftover amount
             nodes.push({ name: 'Debt' });
             const debt = leftover * -1

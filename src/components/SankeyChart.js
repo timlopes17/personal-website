@@ -24,6 +24,8 @@ const SankeyChart = ({ data }) => {
 
       const uniqueNodes = Array.from(new Map(data.nodes.map(node => [node.name, node])).values());
 
+      console.log(data)
+
       const cleanLinks = data.links.map(link => ({
         source: uniqueNodes.findIndex(n => n.name === data.nodes[link.source].name),
         target: uniqueNodes.findIndex(n => n.name === data.nodes[link.target].name),
