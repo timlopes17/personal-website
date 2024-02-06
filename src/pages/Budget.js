@@ -42,7 +42,6 @@ function Budget() {
     }, []);
 
     useEffect(() => {
-        console.log(items)
         setSankeyData(createSankeyData(items));
     }, [items]);
 
@@ -123,7 +122,6 @@ function Budget() {
                     open: false
                   }));
             } else {
-                console.log(json)
                 console.error("Invalid JSON format");
                 setSnackbar({
                     open: true, // or false, depending on your requirement
@@ -171,7 +169,6 @@ function Budget() {
             message: ''
             }));
         } else {
-            console.log(json);
             setSnackbar({
             open: true,
             message: 'Invalid JSON format'
@@ -261,8 +258,6 @@ function Budget() {
 
         const leftover = totalIncome - totalExpenses;
 
-        console.log(leftover, totalIncome, totalExpenses)
-
         // Add a link from 'Income' to 'Leftover' if there is any leftover amount
         if (leftover > 0) {
             // Add a new node for the leftover amount
@@ -291,10 +286,6 @@ function Budget() {
             });
         }
 
-        console.log( {nodes, links} )
-
-        
-        
         return { nodes, links };
         
       }
@@ -307,21 +298,17 @@ function Budget() {
         <ThemeProvider theme={darkTheme}>
             <CssBaseline />
             <div className="flex flex-col">
-                <div id="first-div" className="flex-1 min-h-screen min-w-screen bg-mygray text-white flex flex-col items-center justify-center">
+                <div id="first-div" className="min-h-screen min-w-screen bg-mygray text-white flex flex-col items-center justify-center">
                     <Typography variant="h3" gutterBottom>
                         Budget Balance
                     </Typography>
-                    <div style={{display: 'flex', alignItems: 'center',}}>
+                    <div className="flex items-center justify-center">
+                    <div className="md:flex">
                     <TextField 
                         label="Item" 
                         value={itemName} 
                         onChange={(e) => setItemName(e.target.value)} 
-                        InputLabelProps={{
-                            style: { color: 'white', outlineColor: 'white'},
-                        }}
-                        inputProps={{
-                            style: { color: 'white' },
-                        }}
+                        style={{width: 150}}
                     />
                     <Autocomplete
                         freeSolo
@@ -335,7 +322,7 @@ function Budget() {
                             setCategory(newInputValue === null ? '' : newInputValue);
                         }}
                         renderInput={(params) => (
-                            <TextField {...params} label="Category" variant="outlined" style={{width: 175, marginRight: 10}}/>
+                            <TextField {...params} label="Category" variant="outlined" style={{width: 150, marginRight: 10}}/>
                         )}
                     />
                     <TextField 
@@ -347,42 +334,39 @@ function Budget() {
                             startAdornment: <InputAdornment position="start">$</InputAdornment>,
                         }}
                         onChange={(e) => setItemValue(e.target.value)} 
-                        InputLabelProps={{
-                            style: { color: 'white' },
-                        }}
-                        inputProps={{
-                            style: { color: 'white' },
-                        }}
                     />
-                    <Tooltip title="Add Income" placement="top">
-                        <span>
-                        <IconButton
-                        color="success"
-                        style={{padding: 10}}
-                        onClick={() => handleAddItem('income')}
-                        disabled={!itemName || !itemValue}
-                        >
-                            <AddIcon />
-                        </IconButton>
-                        </span>
-                    </Tooltip>
-                    <Tooltip title="Add Expense" placement="top">
-                        <span>
-                        <IconButton
-                        color="error"
-                        style={{padding: 10}}
-                        onClick={() => handleAddItem('expense')}
-                        disabled={!itemName || !itemValue}
-                        >
-                        <RemoveIcon />
-                        </IconButton>
-                        </span>
-                    </Tooltip>
+                    <div className="mt-4 flex items-center justify-center">
+                        <Tooltip title="Add Income" placement="top">
+                            <span>
+                            <IconButton
+                            color="success"
+                            style={{padding: 10}}
+                            onClick={() => handleAddItem('income')}
+                            disabled={!itemName || !itemValue}
+                            >
+                                <AddIcon />
+                            </IconButton>
+                            </span>
+                        </Tooltip>
+                        <Tooltip title="Add Expense" placement="top">
+                            <span>
+                            <IconButton
+                            color="error"
+                            style={{padding: 10}}
+                            onClick={() => handleAddItem('expense')}
+                            disabled={!itemName || !itemValue}
+                            >
+                            <RemoveIcon />
+                            </IconButton>
+                            </span>
+                        </Tooltip>
+                    </div>
+                    </div>
                     </div>
                     
                     { items.length > 0 && sankeyData.links.length > 0 ? (
-                    <div className="flex flex-row m-4">
-                        <div className="flex flex-col items-center justify-center">
+                    <div className="flex md:flex-row flex-col m-4 items-center justify-center">
+                        <div className="flex-1 flex flex-col items-center justify-center">
                             <List>
                                 {items.map((item, index) => (
                                 <ListItem key={index}>
@@ -408,7 +392,7 @@ function Budget() {
                                 Clear
                             </Button>
                         </div>
-                        <div style={{margin: 10, marginLeft: 20}}>
+                        <div className="flex-1" style={{margin: 10, marginLeft: 20}}>
                             <SankeyChart data={sankeyData} />
                         </div>
                     </div>

@@ -8,23 +8,23 @@ const SankeyChart = ({ data }) => {
   const svgRef = useRef();
 
   useEffect(() => {
-      console.log(data)
 
       const svg = d3.select(svgRef.current);
+      
       svg.selectAll("*").remove();
-      const width = +svg.attr('width');
-      const height = +svg.attr('height');
+
+      // Get the dimensions of the container
+      const containerWidth = +svg.attr('width');
+      const containerHeight = +svg.attr('height');
 
       // Set up the sankey generator
       const sankeyGenerator = sankey()
           .nodeWidth(15)
           .nodePadding(10)
           .nodeAlign(sankeyLeft)
-          .extent([[1, 1], [width - 1, height - 5]]);
+          .extent([[1, 1], [containerWidth - 1, containerHeight - 5]]);
 
       const uniqueNodes = Array.from(new Map(data.nodes.map(node => [node.name, node])).values());
-
-      console.log(data)
 
       const cleanLinks = data.links.map(link => ({
         source: uniqueNodes.findIndex(n => n.name === data.nodes[link.source].name),
@@ -43,8 +43,6 @@ const SankeyChart = ({ data }) => {
         source: sortedNodes.findIndex(node => node.name === data.nodes[link.source].name),
         target: sortedNodes.findIndex(node => node.name === data.nodes[link.target].name)
       }));
-
-      console.log(sortedNodes, updatedLinks)
 
       // Compute the sankey diagram
       const { nodes, links } = sankeyGenerator({
@@ -81,17 +79,17 @@ const SankeyChart = ({ data }) => {
         .data(nodes)
         .enter().append("text")
           .attr("class", "nodeLabel")
-          .attr("x", d => d.x0 < width / 2 ? d.x1 + 6 : d.x0 - 6) // Position based on which side of the chart the node is on
+          .attr("x", d => d.x0 < containerWidth / 2 ? d.x1 + 6 : d.x0 - 6) // Position based on which side of the chart the node is on
           .attr("y", d => (d.y1 + d.y0) / 2)
           .attr("dy", "0.35em")
-          .attr("text-anchor", d => d.x0 < width / 2 ? "start" : "end")
+          .attr("text-anchor", d => d.x0 < containerWidth / 2 ? "start" : "end")
           .attr("fill", "white")
           .style("font-weight", "bold")
           .text(d => `${d.name} (${d.value})`);
 
   }, [data]); // Redraw chart if data changes
 
-  return <svg ref={svgRef} width={800} height={600}></svg>;
+  return <svg ref={svgRef} width={800} height={400}></svg>;
 };
 
 export default SankeyChart;
