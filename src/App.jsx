@@ -193,7 +193,7 @@ function App() {
                 <img src={gmail} alt="Gmail Icon" class="w-6 h-6 mr-2"/>
                 <span>
                   Email:&nbsp;
-                  <a href="mailto:timlopes0817@gmail.com" target="_blank" rel="noreferrer" className="text-white font-bold">timlopes0817@gmail.com</a>
+                  <a href="mailto:timothy.lopes17@gmail.com" target="_blank" rel="noreferrer" className="text-white font-bold">timothy.lopes17@gmail.com</a>
                 </span>
               </span>
               <span className="p-2">
